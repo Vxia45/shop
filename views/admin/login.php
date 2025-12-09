@@ -1,6 +1,6 @@
 <?php 
 $pageTitle = 'Admin Login';
-$headerNav = '<a href="/">Home</a>';
+$headerNav = '<a href="index.php?page=home">Home</a>';
 include 'views/layouts/header.php'; 
 ?>
 
@@ -9,7 +9,7 @@ include 'views/layouts/header.php';
     <?php if(!empty($error)): ?>
         <p style="color:red;"><?php echo $error; ?></p>
     <?php endif; ?>
-    <form method="post" action="/admin/login">
+    <form method="post" action="index.php?page=admin-login">
         <label>Username<br><input name="username" required></label><br><br>
         <label>Password<br><input type="password" name="password" required></label><br><br>
         <button type="submit">Login</button>

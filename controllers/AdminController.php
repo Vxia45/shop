@@ -6,9 +6,10 @@ class AdminController {
     
     public function login() {
         if (Admin::isLoggedIn()) {
-            header('Location: /admin/dashboard');
+            header('Location: ' . url('/admin/dashboard'));
             exit;
         }
+        
         require_once 'views/admin/login.php';
     }
 
@@ -22,7 +23,7 @@ class AdminController {
         if ($admin) {
             $_SESSION['admin_logged'] = true;
             $_SESSION['admin_user'] = $admin['username'];
-            header('Location: /admin/dashboard');
+            header('Location: ' . url('/admin/dashboard'));
             exit;
         } else {
             $error = "Wrong username or password.";
@@ -32,7 +33,7 @@ class AdminController {
 
     public function logout() {
         session_destroy();
-        header('Location: /admin');
+        header('Location: ' . url('/admin'));
         exit;
     }
 
@@ -70,7 +71,7 @@ class AdminController {
             'image' => $image
         ]);
 
-        header('Location: /admin/dashboard');
+        header('Location: ' . url('/admin/dashboard'));
         exit;
     }
 
@@ -82,7 +83,7 @@ class AdminController {
         $product = $productModel->getById($id);
 
         if (!$product) {
-            header('Location: /admin/dashboard');
+            header('Location: ' . url('/admin/dashboard'));
             exit;
         }
 
@@ -97,7 +98,7 @@ class AdminController {
         $product = $productModel->getById($id);
 
         if (!$product) {
-            header('Location: /admin/dashboard');
+            header('Location: ' . url('/admin/dashboard'));
             exit;
         }
 
@@ -107,7 +108,6 @@ class AdminController {
         $image = $product['image'];
 
         if (!empty($_FILES['image']['name'])) {
-            // Delete old image
             if ($image && file_exists(UPLOAD_DIR . $image)) {
                 unlink(UPLOAD_DIR . $image);
             }
@@ -121,7 +121,7 @@ class AdminController {
             'image' => $image
         ]);
 
-        header('Location: /admin/dashboard');
+        header('Location: ' . url('/admin/dashboard'));
         exit;
     }
 
@@ -133,14 +133,13 @@ class AdminController {
         $product = $productModel->getById($id);
 
         if ($product) {
-            // Delete image file
             if ($product['image'] && file_exists(UPLOAD_DIR . $product['image'])) {
                 unlink(UPLOAD_DIR . $product['image']);
             }
             $productModel->delete($id);
         }
 
-        header('Location: /admin/dashboard');
+        header('Location: ' . url('/admin/dashboard'));
         exit;
     }
 

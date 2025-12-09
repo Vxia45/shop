@@ -25,7 +25,7 @@ class Admin {
 
     public static function requireLogin() {
         if (!self::isLoggedIn()) {
-            header('Location: /admin');
+            header('Location: ' . url('/admin'));
             exit;
         }
     }

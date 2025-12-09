@@ -1,7 +1,9 @@
 <?php 
 $pageTitle = 'Admin Dashboard';
-$headerNav = '<a href="/">Home</a> | <a href="/admin/dashboard">Dashboard</a> | 
-              <a href="/admin/add">Add Product</a> | <a href="/admin/logout">Logout</a>';
+$headerNav = '<a href="index.php?page=home">Home</a> | 
+              <a href="index.php?page=admin-dashboard">Dashboard</a> | 
+              <a href="index.php?page=admin-add">Add Product</a> | 
+              <a href="index.php?page=admin-logout">Logout</a>';
 include 'views/layouts/header.php'; 
 ?>
 
@@ -18,12 +20,12 @@ include 'views/layouts/header.php';
             <td><?php echo number_format($p['price'], 2, ',', ' '); ?> лв.</td>
             <td>
                 <?php if ($p['image']): ?>
-                    <img src="/public/uploads/<?php echo $p['image']; ?>" style="height:50px;">
+                    <img src="public/uploads/<?php echo $p['image']; ?>" style="height:50px;">
                 <?php endif; ?>
             </td>
             <td>
-                <a href="/admin/edit?id=<?php echo $p['id']; ?>">Edit</a> |
-                <a href="/admin/delete?id=<?php echo $p['id']; ?>" 
+                <a href="index.php?page=admin-edit&id=<?php echo $p['id']; ?>">Edit</a> |
+                <a href="index.php?page=admin-delete&id=<?php echo $p['id']; ?>" 
                    onclick="return confirm('Delete product?');">Delete</a>
             </td>
         </tr>
