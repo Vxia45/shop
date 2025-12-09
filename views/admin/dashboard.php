@@ -20,7 +20,7 @@ include 'views/layouts/header.php';
             <td><?php echo number_format($p['price'], 2, ',', ' '); ?> лв.</td>
             <td>
                 <?php if ($p['image']): ?>
-                    <img src="public/uploads/<?php echo $p['image']; ?>" style="height:50px;">
+                    <img src="<?php echo asset('public/uploads/' . $p['image']); ?>" style="height:70px;">
                 <?php endif; ?>
             </td>
             <td>

@@ -6,7 +6,7 @@ class AdminController {
     
     public function login() {
         if (Admin::isLoggedIn()) {
-            header('Location: ' . url('/admin/dashboard'));
+            header('Location: index.php?page=admin-dashboard');
             exit;
         }
         
@@ -23,7 +23,7 @@ class AdminController {
         if ($admin) {
             $_SESSION['admin_logged'] = true;
             $_SESSION['admin_user'] = $admin['username'];
-            header('Location: ' . url('/admin/dashboard'));
+            header('Location: index.php?page=admin-dashboard');
             exit;
         } else {
             $error = "Wrong username or password.";
@@ -33,7 +33,7 @@ class AdminController {
 
     public function logout() {
         session_destroy();
-        header('Location: ' . url('/admin'));
+        header('Location: index.php?page=admin-login');
         exit;
     }
 
@@ -71,7 +71,7 @@ class AdminController {
             'image' => $image
         ]);
 
-        header('Location: ' . url('/admin/dashboard'));
+        header('Location: index.php?page=admin-dashboard');
         exit;
     }
 
@@ -83,7 +83,7 @@ class AdminController {
         $product = $productModel->getById($id);
 
         if (!$product) {
-            header('Location: ' . url('/admin/dashboard'));
+            header('Location: index.php?page=admin-dashboard');
             exit;
         }
 
@@ -98,7 +98,7 @@ class AdminController {
         $product = $productModel->getById($id);
 
         if (!$product) {
-            header('Location: ' . url('/admin/dashboard'));
+            header('Location: index.php?page=admin-dashboard');
             exit;
         }
 
@@ -121,7 +121,7 @@ class AdminController {
             'image' => $image
         ]);
 
-        header('Location: ' . url('/admin/dashboard'));
+        header('Location: index.php?page=admin-dashboard');
         exit;
     }
 
@@ -139,7 +139,7 @@ class AdminController {
             $productModel->delete($id);
         }
 
-        header('Location: ' . url('/admin/dashboard'));
+        header('Location: index.php?page=admin-dashboard');
         exit;
     }
 

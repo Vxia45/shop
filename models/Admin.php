@@ -25,7 +25,7 @@ class Admin {
 
     public static function requireLogin() {
         if (!self::isLoggedIn()) {
-            header('Location: ' . url('/admin'));
+            header('Location: index.php?page=admin-login');
             exit;
         }
     }

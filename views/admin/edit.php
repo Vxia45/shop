@@ -8,6 +8,7 @@ include 'views/layouts/header.php';
 
 <main style="max-width:600px;margin:20px auto;">
     <h2>Edit Product</h2>
+    
     <form method="post" action="index.php?page=admin-edit&id=<?php echo $product['id']; ?>" enctype="multipart/form-data">
         <label>Title<br>
             <input name="title" value="<?php echo htmlspecialchars($product['title']); ?>" required>
@@ -23,7 +24,7 @@ include 'views/layouts/header.php';
 
         <?php if ($product['image']): ?>
             <p>Current image:<br>
-                <img src="public/uploads/<?php echo $product['image']; ?>" style="height:80px;">
+                <img src="<?php echo asset('public/uploads/' . $product['image']); ?>" style="height:150px;">
             </p>
         <?php endif; ?>
 

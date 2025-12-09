@@ -9,7 +9,7 @@ include 'views/layouts/header.php';
         <?php foreach ($products as $p): ?>
             <div class="product-card">
                 <?php if($p['image'] && file_exists(UPLOAD_DIR . $p['image'])): ?>
-                    <img src="public/uploads/<?php echo htmlspecialchars($p['image']); ?>" 
+                    <img src="<?php echo asset('public/uploads/' . htmlspecialchars($p['image'])); ?>" 
                          alt="<?php echo htmlspecialchars($p['title']); ?>">
                 <?php endif; ?>
                 <h3><?php echo htmlspecialchars($p['title']); ?></h3>
