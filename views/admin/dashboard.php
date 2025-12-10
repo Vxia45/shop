@@ -37,7 +37,7 @@ include 'views/layouts/header.php';
                         <td>
                             <?php if ($p['image']): ?>
                                 <img src="<?php echo htmlspecialchars(asset('public/uploads/' . $p['image'])); ?>" 
-                                     style="height: 150px;" 
+                                     style="height: 150px; width: auto;" 
                                      class="table-thumbnail" 
                                      alt="<?php echo htmlspecialchars($p['title']); ?>">
                             <?php else: ?>
